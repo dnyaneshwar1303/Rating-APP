@@ -65,6 +65,13 @@ Setup instructions
       - Add User: POST /admin/users
       - Submit Rating: POST /user/ratings
 
+* Login as Admin:- 
+                 > Email: admin@example.com
+                 > password: Admin@1234
+
+* Login as storeowner:-
+                > storeowner@example.com
+                > StoreOwner@123
 
 * Database Schema:-
     - User table = 
