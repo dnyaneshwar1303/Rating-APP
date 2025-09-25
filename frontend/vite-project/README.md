@@ -1,16 +1,85 @@
-# React + Vite
+Features:-
+           * Single login system for all roles.
+           * JWT -based authentication.
+           * Role-based access control.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+System Administrator:-
+                    * Add new Users(Normal/Admin)
+                    * Add new stores(Stores Owners with login credentials).
+                    * Dashboard with:
+                                   - Total users
+                                   - Total stores
+                                   - Total ratings
+                    * View and filter users/stores.
+                    * Delete users
+                    *Logout
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Normal User:-
+            * Sign up and log in
+            * Update password
+            * View list of all stores
+            * Search stores by name or address
+            * Submit ratings(1-5)
+            * Update submitted rating
+            * Logout
 
-## React Compiler
+Store Owner:-
+            * Log in with credentials
+            * Update Password
+            * View users who rated their store
+            * View average rating of their store
+            * Logout
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+Setup instructions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ * clone Repository:-
+                   - git clone <repo url>
+                   - cd project-folder
+
+ * Backend Setup:-
+                - cd backend
+                - npm install
+
+    -create .env file inside backend:-
+         - DB_HOST = localhost
+         - DB_USER = root
+         - DB_PASSWORD = Dkvd@123
+         - DB_NAME = rating_app
+         - JWT_SECRET = your_jwt_secret_key
+         - PORT = 5000
+
+ Start Backend:- npm run dev
+
+ * Frontend Setup:-
+       - cd frontend
+       - npm install
+       - npm run dev
+
+
+* API Testing:-
+      - Login: POST /auth/login
+      - Signup: POST /auth/signup(Normal user only)
+      - Add store: POST /admin/stores
+      - Add User: POST /admin/users
+      - Submit Rating: POST /user/ratings
+
+
+* Database Schema:-
+    - User table = 
+        > id (PK)
+        > name
+        > email
+        > password (hashed with bcrypt)
+        > address
+        > role (admin, normal, store_owner)
+
+    - ratings Table =
+        > id (PK)
+        > user_id (FK - users)
+        > store_id (FK - users, where role = store_owner)
+        > rating (1-5)
+
+* Developer:-
+      - Dnyaneshwar Patil
